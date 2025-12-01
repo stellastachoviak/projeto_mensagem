@@ -37,7 +37,7 @@ const ChatWindow = ({ conversationId, currentUserId, userRole }: ChatWindowProps
 
     loadMessages();
 
-    
+    // Subscribe to new messages
     const channel = supabase
       .channel(`conversation:${conversationId}`)
       .on(
@@ -60,7 +60,7 @@ const ChatWindow = ({ conversationId, currentUserId, userRole }: ChatWindowProps
   }, [conversationId]);
 
   useEffect(() => {
- 
+    // Scroll to bottom when messages change
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
